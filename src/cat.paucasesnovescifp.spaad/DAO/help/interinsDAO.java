@@ -2,6 +2,7 @@ package DAO.help;
 
 import JPA.model.Aspirant;
 import JPA.model.Illa;
+import JPA.model.Localitat;
 
 import java.util.List;
 
@@ -15,5 +16,8 @@ public interface interinsDAO {
     void deleteObject(Object object);
 
     List<Illa> tornaIlles();
+
+    List<Illa> tornaIllesNamedQuery();
+    List<Localitat> tornaLocalitatsIlla(Illa illa);
 
 }

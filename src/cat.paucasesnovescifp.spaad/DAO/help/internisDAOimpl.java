@@ -2,6 +2,7 @@ package DAO.help;
 
 import JPA.model.Aspirant;
 import JPA.model.Illa;
+import JPA.model.Localitat;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -100,4 +101,27 @@ public class internisDAOimpl implements interinsDAO {
             return illes;
         }
     }
+
+    @Override
+    public List<Illa> tornaIllesNamedQuery() {
+        try(EntityManagerFactory factory = Persistence.createEntityManagerFactory(unitatPersistencia);
+            EntityManager manager = factory.createEntityManager()){
+            TypedQuery<Illa> query = manager.createNamedQuery("tornaIlles", Illa.class);
+            List<Illa> illes = query.getResultList();
+            return illes;
+        }
+    }
+
+    @Override
+    public List<Localitat> tornaLocalitatsIlla(Illa illa) {
+        try(EntityManagerFactory factory = Persistence.createEntityManagerFactory(unitatPersistencia);
+            EntityManager manager = factory.createEntityManager()){
+            TypedQuery<Localitat> query = manager.createQuery("Select l from Localitat l where l.illa = :illaParam", Localitat.class);
+            query.setParameter("illaParam", illa);
+            List<Localitat> localitats = query.getResultList();
+            return localitats;
+        }
+    }
+
+
 }

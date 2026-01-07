@@ -1,13 +1,16 @@
 import JPA.model.Illa;
 import JPA.model.Localitat;
 import JPA.test.ProvesJPA;
+import DAO.help.internisDAOimpl;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
         Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.SEVERE);
         ProvesJPA provesJPA = new ProvesJPA("interins-pu");
+        internisDAOimpl internisDAOimpl = new internisDAOimpl("interins-pu");
 //        provesJPA.modifcaAdrecaAspirant("12007493F", "Calle 123");
         Illa illa = new Illa("071", "Mallorca");
         Localitat localitat = new Localitat("070270001",illa, "Inca");
@@ -20,7 +23,13 @@ public class Main {
 //        Centre centre = new Centre("99999", "IES INCA",localitat);
 //        provesJPA.esborra(centre);
 
-        provesJPA.tornaCentresLocalitat(localitat).forEach(System.out::println);
+//        provesJPA.tornaCentresLocalitat(localitat).forEach(System.out::println);
+//        List<Illa> illes = internisDAOimpl.tornaIlles();
+//        illes.forEach(System.out::println);
+
+        List<Localitat> localitats = internisDAOimpl.tornaLocalitatsIlla(illa);
+        localitats.forEach(System.out::println);
+
 
     }
 }
