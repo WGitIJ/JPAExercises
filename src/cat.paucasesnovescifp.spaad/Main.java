@@ -1,0 +1,26 @@
+import JPA.model.Illa;
+import JPA.model.Localitat;
+import JPA.test.ProvesJPA;
+
+import java.util.logging.Logger;
+
+public class Main {
+    public static void main(String[] args) {
+        Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.SEVERE);
+        ProvesJPA provesJPA = new ProvesJPA("interins-pu");
+//        provesJPA.modifcaAdrecaAspirant("12007493F", "Calle 123");
+        Illa illa = new Illa("071", "Mallorca");
+        Localitat localitat = new Localitat("070270001",illa, "Inca");
+//        Centre centre = new Centre("07007841", "CIFP PAU CASESNOVES", localitat);
+//        provesJPA.actualitzaCentre(centre);
+
+//        Centre centre = provesJPA.creaCentra("99999", "IES INCA", localitat);
+//        System.out.println(centre);
+
+//        Centre centre = new Centre("99999", "IES INCA",localitat);
+//        provesJPA.esborra(centre);
+
+        provesJPA.tornaCentresLocalitat(localitat).forEach(System.out::println);
+
+    }
+}
