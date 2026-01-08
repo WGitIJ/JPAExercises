@@ -27,9 +27,17 @@ public class Main {
 //        List<Illa> illes = internisDAOimpl.tornaIlles();
 //        illes.forEach(System.out::println);
 
-        List<Localitat> localitats = internisDAOimpl.tornaLocalitatsIlla(illa);
-        localitats.forEach(System.out::println);
+//        List<Localitat> localitats = internisDAOimpl.tornaLocalitatsIlla(illa);
+//        localitats.forEach(System.out::println);
 
+        /*List<Aspirant> aspirantes = internisDAOimpl.tornaAspirants(1, 3);
+        aspirantes.forEach(System.out::println);*/
+
+//        List<String> nifs = internisDAOimpl.getNifs(1,3);
+//        nifs.forEach(System.out::println);
+
+        List<String> nomsComplets = internisDAOimpl.getNomComplet(1,3);
+        nomsComplets.forEach(System.out::println);
 
     }
 }

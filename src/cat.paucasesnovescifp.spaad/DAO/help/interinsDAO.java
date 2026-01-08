@@ -5,6 +5,7 @@ import JPA.model.Illa;
 import JPA.model.Localitat;
 
 import java.util.List;
+import java.util.prefs.Preferences;
 
 public interface interinsDAO {
     Aspirant recuperarAspirant(String nif);
@@ -19,5 +20,15 @@ public interface interinsDAO {
 
     List<Illa> tornaIllesNamedQuery();
     List<Localitat> tornaLocalitatsIlla(Illa illa);
+
+    List<Localitat> tornaLocalitatsIllesNamedQuery(Illa illa);
+
+    List<Aspirant> tornaAspirants(int inici, int quantitat);
+
+    List<String> getNifs(int inici, int quantitat);
+
+    List<String> getNomComplet(int inici, int quanitat);
+
+    Preferencies getPreferences(int inici, int quantitat);
 
 }

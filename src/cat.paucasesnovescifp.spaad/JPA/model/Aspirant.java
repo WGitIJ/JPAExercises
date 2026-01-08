@@ -3,6 +3,7 @@ package JPA.model;
 import JPA.help.JPAException;
 import jakarta.persistence.*;
 
+@NamedQuery(name = "getNifs", query = "SELECT a.NIF FROM Aspirant a ORDER BY llinatges")
 @Entity
 @Table(name = "aspirants")
 public class Aspirant {

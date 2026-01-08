@@ -2,6 +2,7 @@ package JPA.model;
 
 import jakarta.persistence.*;
 
+@NamedQuery(name = "tornaLocalitatsIlla", query = "Select l from Localitat l where l.illa = :illa")
 @Entity
 @Table(name = "localitats")
 public class Localitat {
