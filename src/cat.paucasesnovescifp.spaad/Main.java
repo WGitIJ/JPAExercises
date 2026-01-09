@@ -1,5 +1,7 @@
+import JPA.model.Aspirant;
 import JPA.model.Illa;
 import JPA.model.Localitat;
+import JPA.model.Preferencies;
 import JPA.test.ProvesJPA;
 import DAO.help.internisDAOimpl;
 
@@ -27,17 +29,23 @@ public class Main {
 //        List<Illa> illes = internisDAOimpl.tornaIlles();
 //        illes.forEach(System.out::println);
 
-//        List<Localitat> localitats = internisDAOimpl.tornaLocalitatsIlla(illa);
+//        List<Localitat> localitats = internisDAOimpl.tornaLocalitatsIllesNamedQuery(illa);
 //        localitats.forEach(System.out::println);
 
-        /*List<Aspirant> aspirantes = internisDAOimpl.tornaAspirants(1, 3);
-        aspirantes.forEach(System.out::println);*/
+//        List<Aspirant> aspirantes = internisDAOimpl.tornaAspirants(1, 5);
+//        aspirantes.forEach(System.out::println);
 
-//        List<String> nifs = internisDAOimpl.getNifs(1,3);
+//        List<String> nifs = internisDAOimpl.getNifs(1,10);
 //        nifs.forEach(System.out::println);
 
-        List<String> nomsComplets = internisDAOimpl.getNomComplet(1,3);
-        nomsComplets.forEach(System.out::println);
+//        List<String> nomsComplets = internisDAOimpl.getNomComplet(1,3);
+//        nomsComplets.forEach(System.out::println);
+
+//        List<Localitat> localitats1 = internisDAOimpl.tornaLocalitatsIlla2(illa);
+//        localitats1.forEach(System.out::println);
+
+        List<Preferencies> preferencies = internisDAOimpl.getPreferences(1,3);
+        preferencies.forEach(System.out::println);
 
     }
 }

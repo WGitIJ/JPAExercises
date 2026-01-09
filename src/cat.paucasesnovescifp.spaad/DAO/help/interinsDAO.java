@@ -3,6 +3,7 @@ package DAO.help;
 import JPA.model.Aspirant;
 import JPA.model.Illa;
 import JPA.model.Localitat;
+import JPA.model.Preferencies;
 
 import java.util.List;
 import java.util.prefs.Preferences;
@@ -20,6 +21,7 @@ public interface interinsDAO {
 
     List<Illa> tornaIllesNamedQuery();
     List<Localitat> tornaLocalitatsIlla(Illa illa);
+    List<Localitat> tornaLocalitatsIlla2(Illa illa);
 
     List<Localitat> tornaLocalitatsIllesNamedQuery(Illa illa);
 
@@ -29,6 +31,6 @@ public interface interinsDAO {
 
     List<String> getNomComplet(int inici, int quanitat);
 
-    Preferencies getPreferences(int inici, int quantitat);
+    List<Preferencies> getPreferences(int inici, int quantitat);
 
 }

@@ -1,77 +1,78 @@
-//package model;
-//
-//import jakarta.persistence.*;
-//
-//@Entity
-//@Table(name = "preferencies")
-//public class Preferencies {
-//    @Id
-//    private String NIF;
-//    @Id
-//    private int ordre;
-//    private String idCossos;
-//    private String idEspecialitat;
-//    private String idIlla;
-//
-//    public Preferencies() {
-//    }
-//
-//    public Preferencies(String NIF, int ordre, String idCos, String idEspecialitat, String idIlla) {
-//        this.NIF = NIF;
-//        this.ordre = ordre;
-//        this.cossos = idCos;
-//        this.idEspecialitat = idEspecialitat;
-//        this.idIlla = idIlla;
-//    }
-//
-//    public String getNIF() {
-//        return NIF;
-//    }
-//
-//    public void setNIF(String NIF) {
-//        this.NIF = NIF;
-//    }
-//
-//    public int getOrdre() {
-//        return ordre;
-//    }
-//
-//    public void setOrdre(int ordre) {
-//        this.ordre = ordre;
-//    }
-//
-//    public String getIdCos() {
-//        return cossos;
-//    }
-//
-//    public void setIdCos(String cossos) {
-//        this.cossos = cossos;
-//    }
-//
-//    public String getIdEspecialitat() {
-//        return idEspecialitat;
-//    }
-//
-//    public void setIdEspecialitat(String idEspecialitat) {
-//        this.idEspecialitat = idEspecialitat;
-//    }
-//
-//    public String getIdIlla() {
-//        return idIlla;
-//    }
-//
-//    public void setIdIlla(String idIlla) {
-//        this.idIlla = idIlla;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Preferencies{" +
-//                "NIF='" + NIF + '\'' +
-//                ", ordre=" + ordre +
-//                ", idCos='" + cossos + '\'' +
-//                ", idEspecialitat='" + idEspecialitat + '\'' +
-//                ", idIlla='" + idIlla + '\'' +
-//                '}';
-//    }
-//}
+package JPA.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "preferencies")
+@IdClass(PreferenciesPK.class)
+public class Preferencies {
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "Nif")
+    private Aspirant aspirant;
+
+    @Id
+    private int ordre;
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "idCos") ,
+            @JoinColumn(name = "idEspecialitat")
+    })
+    private Especialitat especialitat;
+    @ManyToOne
+    @JoinColumn(name = "idCentre")
+    private Centre centre;
+
+    public Preferencies() {
+
+    }
+
+    public Preferencies(Aspirant aspirant, int ordre, Especialitat especialitat, Centre centre) {
+        this.aspirant = aspirant;
+        this.ordre = ordre;
+        this.especialitat = especialitat;
+        this.centre = centre;
+    }
+
+    public Aspirant getAspirant() {
+        return aspirant;
+    }
+
+    public void setAspirant(Aspirant aspirant) {
+        this.aspirant = aspirant;
+    }
+
+    public int getOrdre() {
+        return ordre;
+    }
+
+    public void setOrdre(int ordre) {
+        this.ordre = ordre;
+    }
+
+    public Especialitat getEspecialitat() {
+        return especialitat;
+    }
+
+    public void setEspecialitat(Especialitat especialitat) {
+        this.especialitat = especialitat;
+    }
+
+    public Centre getCentre() {
+        return centre;
+    }
+
+    public void setCentre(Centre centre) {
+        this.centre = centre;
+    }
+
+    @Override
+    public String toString() {
+        return "Preferencies{" +
+                "aspirant=" + aspirant +
+                ", ordre=" + ordre +
+                ", especialitat=" + especialitat +
+                ", centre=" + centre +
+                '}';
+    }
+}

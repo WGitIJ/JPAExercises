@@ -12,7 +12,7 @@
         <class>JPA.model.Centre</class>
         <class>JPA.model.Cossos</class>
         <class>JPA.model.Localitat</class>
-<!--        <class>model.Preferencies</class>-->
+        <class>JPA.model.Preferencies</class>
 
         <properties>
             <!-- database connection -->

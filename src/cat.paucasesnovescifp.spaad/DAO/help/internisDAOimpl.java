@@ -3,6 +3,7 @@ package DAO.help;
 import JPA.model.Aspirant;
 import JPA.model.Illa;
 import JPA.model.Localitat;
+import JPA.model.Preferencies;
 import jakarta.persistence.*;
 
 import java.sql.Struct;
@@ -124,8 +125,16 @@ public class internisDAOimpl implements interinsDAO {
             return localitats;
         }
     }
-
     //TODO Repeteix l'exercici anterior sense utilitzar consultes?
+    @Override
+    public List<Localitat> tornaLocalitatsIlla2(Illa illa) {
+        try(EntityManagerFactory factory = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager manager = factory.createEntityManager()){
+            Illa isla = manager.find(Illa.class, illa.getIdIlla());
+//            isla.getLocalitats().forEach(System.out::println);
+            return isla.getLocalitats();
+        }
+    }
 
     //TODO Crea una namedQuery a la classe que toqui per tornar totes les localitats d'una determinada illa i implementa un mètode per utilitzar-la.
     @Override
@@ -179,11 +188,13 @@ public class internisDAOimpl implements interinsDAO {
     //TODO getPreferencies(int inici, int quantitat): Torna les preferències de la base de dades ordenades per id de centre.
     //!! Mi clase Preferencies no está implementada correctamente en JPA, por lo que no puedo completar este método.
     @Override
-    public Preferences getPreferences(int inici, int quantitat) {
-//        try(EntityManagerFactory factory = Persistence.createEntityManagerFactory(unitatPersistencia);
-//        EntityManager manager = factory.createEntityManager()){
-//
-//        }
+    public List<Preferencies> getPreferences(int inici, int quantitat) {
+        try(EntityManagerFactory factory = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager manager = factory.createEntityManager()){
+            TypedQuery<Preferencies> query = manager.createQuery("from Preferencies p ORDER BY p.centre.idCentre", Preferencies.class);
+            List<Preferencies> preferencies = query.getResultList();
+            return preferencies;
+        }
     }
 
 
